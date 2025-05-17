@@ -1,16 +1,42 @@
 @import url('https://fonts.googleapis.com/css?family=Sacramento');
 
+
 #card {
-   height: 550px;
+   height:500px;
    width:800px;
-   margin:5em auto;
-   position: fixed;
-  top: 15px;
+   margin:6em auto;
+   position: relative;
+  top: -15px;
    left: 25%;
+   right: 40px;
    display:flex;
    visibility:hidden;
+
    
 }
+.side {
+   background:#eee;
+   height: 700px;
+   width:500px;
+/*    border:1px solid red; */
+   padding:10px;
+
+
+}
+.side.one {
+   width:320px;
+   transform:skew(10deg,20deg);
+   background:linear-gradient(90deg, #fff, #fff 40%, #ddd);
+
+
+}
+.side.two {
+   transform:skew(10deg,-15deg);
+   background:linear-gradient(-90deg, #fff, #fff 40%, #f0f0f0);
+  overflow-y: auto;
+}
+
+
 #card h2 {
    font-size:3em;
    margin:0;
@@ -24,34 +50,6 @@
    padding-right: 30px; /* Espacio en blanco a la derecha */
 }
 
-
-.side {
-   background:#eee;
-   height: 700px;
-   width:500px;
-/*    border:1px solid red; */
-   padding:10px;
-}
-
-.side.one {
-   width:320px;
-   transform:skew(10deg,20deg);
-   background:linear-gradient(90deg, #fff, #fff 40%, #ddd);
-  transform-origin: right center;
-}
-.side.two {
-   transform:skew(10deg,-15deg);
-   background:linear-gradient(-90deg, #fff, #fff 40%, #f0f0f0);
-   overflow-y: auto;
-   transform-origin: left center;
-}
-.sides-wrapper {
-  display: flex;
-  justify-content: center;
-  align-items: center;
-  gap: rem; /* espacio entre las dos caras */
-}
-
 body {
    display: flex;
    align-items: center;
@@ -59,7 +57,9 @@ body {
    height: 100vh;
    font-family: 'Sacramento', cursive;
    background-color: #f1e3d3;
-   overflow: hidden;
+   overflow: auto;
+   min-width: 200px; /* Asegura scroll horizontal si el contenido lo necesita */
+  min-height: 1000px; /* Asegura scroll vertical */
  }
  
 h2, h3{
@@ -68,7 +68,7 @@ h2, h3{
 }
  
  .valentines-day {
-   position: relative;
+   position: fixed;
    cursor: pointer;
  }
  
