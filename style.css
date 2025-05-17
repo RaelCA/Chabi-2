@@ -1,13 +1,28 @@
 @import url('https://fonts.googleapis.com/css?family=Sacramento');
 
+@media (max-width: 768px) {
+  .card {
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    transform: none !important; /* Anula transformaciones que saquen del centro */
+    margin: 0 auto;
+    position: relative;
+    left: 0;
+    right: 0;
+  }
+}
+
 #card {
-  width: 90%;
-  max-width: 800px;
-  margin: 5em auto;
-  display: flex;
-  flex-direction: column; /* Columnas en móvil */
-  visibility: hidden;
-  position: relative;
+   height:500px;
+   width:800px;
+   margin:5em auto;
+   position: fixed;
+  top: -15px;
+   left: 25%;
+   display:flex;
+   visibility:hidden;
+   
 }
 #card h2 {
    font-size:3em;
@@ -24,33 +39,24 @@
 
 
 .side {
-  background: #eee;
-  padding: 20px;
-  width: 100%;
-  box-sizing: border-box;
+   background:#eee;
+   height: 700px;
+   width:500px;
+/*    border:1px solid red; */
+   padding:10px;
 }
-
 .side.one {
-  background: linear-gradient(90deg, #fff, #fff 40%, #ddd);
-  transform: none; /* Sin skew en móvil */
+   width:320px;
+   transform:skew(10deg,20deg);
+   background:linear-gradient(90deg, #fff, #fff 40%, #ddd);
 }
-
 .side.two {
-  background: linear-gradient(-90deg, #fff, #fff 40%, #f0f0f0);
-  transform: none;
-  max-height: 70vh;
-  overflow-y: auto;
+   transform:skew(10deg,-15deg);
+   background:linear-gradient(-90deg, #fff, #fff 40%, #f0f0f0);
+   overflow-y: auto;
 }
 
-#card h2 {
-  font-size: 2em;
-}
 
-#card p {
-  font-size: 1.2em;
-  padding-left: 10px;
-  padding-right: 10px;
-}
 body {
    display: flex;
    align-items: center;
@@ -98,52 +104,83 @@ h2, h3{
    top:45px;
  }
  
- @media (max-width: 600px) {
-  .valentines-day {
-    transform: scale(0.8); /* Reduce el sobre */
-  }
-
-  .heart {
-    height: 120px;
-    width: 120px;
-  }
-
-  .heart:before,
-  .heart:after {
-    height: 120px;
-    width: 120px;
-  }
-
-  .front {
-    border-right: 130px solid #fbd2d2;
-    border-top: 80px solid transparent;
-    border-bottom: 80px solid transparent;
-    left: 60px;
-  }
-
-  .front:before {
-    border-left: 130px solid #fbd2d2;
-    border-top: 80px solid transparent;
-    border-bottom: 80px solid transparent;
-    top: -80px;
-    left: -115px;
-  }
-
-  .front:after {
-    border-bottom: 110px solid #fce7e9;
-    border-right: 130px solid transparent;
-    border-left: 130px solid transparent;
-    top: -30px;
-    left: -115px;
-  }
-
-  .text {
-    top: 60px;
-    font-size: 14px;
-    left: 5px;
-  }
-}
-
+ .heart {
+   position: relative;
+   background-color: #e01911;
+   display: inline-block;
+   height: 180px;
+   top:50px;
+   left:0;
+   transform: rotate(-45deg);
+   width:180px;
+   filter: drop-shadow(0 -10px 25px rgba(0,0,0,.3));
+   transition: .5s;
+ }
+   
+ .heart:before, .heart:after {
+   content:"";
+   background-color: #e01911;
+   border-radius:50%;
+   height: 180px;
+   width: 180px;
+   position: absolute;
+   }
+   
+ .heart:before {
+   top:-100px;
+   left:0;}
+   
+ .heart:after {
+   left:100px;
+   top:0;}
+ 
+ .front {
+   position: absolute;
+   width:0;
+   height:0;
+   border-right: 190px solid #fbd2d2;
+   border-top: 113px solid transparent;
+   border-bottom: 113px solid transparent;
+   top:44px;
+   left:80px;
+   z-index:4;
+ }
+ 
+ .front:before {
+   content:"";
+   position: absolute;
+   width:0;
+   height:0;
+   border-left: 190px solid #fbd2d2;
+   border-top: 113px solid transparent;
+   border-bottom: 113px solid transparent;
+   top:-113px;
+   left:-170px;
+ }
+ 
+ .front:after {
+   width:0;
+   height:0;
+   position: absolute;
+   content:"";
+   border-bottom: 150px solid #fce7e9;
+   border-right:180px solid transparent;
+   border-left: 180px solid transparent;
+   top:-36px;
+   left:-170px;
+ }
+ 
+ .text {
+   position: absolute;
+   font-family: arial;
+   letter-spacing:5px;
+   text-align: center;
+   color: white;
+   z-index:2;
+   top:80px;
+   left:15px;
+   transition: .5s;
+ }
  
  .valentines-day:hover .heart {
    transform: translateY(-50px) rotate(-45deg);
